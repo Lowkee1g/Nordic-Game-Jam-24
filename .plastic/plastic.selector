@@ -1,0 +1,4 @@
+repository "Nordic Game Jam 24@SoulTeam@cloud"
+  path "/"
+    br "/main"
+    co "/main"
