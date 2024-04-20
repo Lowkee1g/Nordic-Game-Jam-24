@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class kill : MonoBehaviour
 {
-    // private void OnCollisionEnter(Collision collision)
-    // {
-    //     if (collision.gameObject.name == "Circle");
-    //     {
-    //         Destroy(gameObject);
-    //     }
-    // }
-
+    //upon collision with circle, destroy self
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Bullet")
+        {
+            Destroy(gameObject);
+        }
+    }
 }

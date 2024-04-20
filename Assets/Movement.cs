@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
-    [SerializeField] float speed = 5f;
+    [SerializeField] float speed = 100f;
     Rigidbody2D rb;
     Vector2 movement;
      // Start is called before the first frame update
@@ -28,15 +28,10 @@ public class Movement : MonoBehaviour
 
     
     void moveCharacter(){
-        if (movement.magnitude != 0){
         rb.velocity =  movement * speed * Time.fixedDeltaTime;
-        // float angle = Mathf.Atan2(movement.y, movement.x) * Mathf.Rad2Deg;
-        // transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
-        }
-        else{
-            rb.velocity = Vector2.zero;
-        }
-        
+        //rotation
+        float angle = Mathf.Atan2(movement.y, movement.x) * Mathf.Rad2Deg;
+        rb.rotation = angle;       
     }
 
 }
