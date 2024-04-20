@@ -36,7 +36,6 @@ public class Movement : MonoBehaviour
         } else if (movement.magnitude == 0){
             sound.Stop();
         }
-
         rb.velocity =  movement * speed * Time.fixedDeltaTime;
     }
 }
