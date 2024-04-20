@@ -396,6 +396,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1243417849315376500, guid: 66cfcf005bbfb904e878d7f9ff52909a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1243417849315376500, guid: 66cfcf005bbfb904e878d7f9ff52909a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1243417849315376500, guid: 66cfcf005bbfb904e878d7f9ff52909a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5234076034220063344, guid: 66cfcf005bbfb904e878d7f9ff52909a, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.22
@@ -885,11 +897,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2135063546520869952, guid: b33d492cd83138241b754ad624c8c89d, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.9961947
       objectReference: {fileID: 0}
     - target: {fileID: 2135063546520869952, guid: b33d492cd83138241b754ad624c8c89d, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: 0.08715578
       objectReference: {fileID: 0}
     - target: {fileID: 2135063546520869952, guid: b33d492cd83138241b754ad624c8c89d, type: 3}
       propertyPath: m_LocalRotation.y
@@ -901,7 +913,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2135063546520869952, guid: b33d492cd83138241b754ad624c8c89d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2135063546520869952, guid: b33d492cd83138241b754ad624c8c89d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -1258,6 +1270,14 @@ PrefabInstance:
       propertyPath: rute
       value: 
       objectReference: {fileID: 1795063670}
+    - target: {fileID: 8982274847082254989, guid: 0124dcfe79963f549b4a0ba2201c6418, type: 3}
+      propertyPath: pauseTimeArray.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8982274847082254989, guid: 0124dcfe79963f549b4a0ba2201c6418, type: 3}
+      propertyPath: pauseTimeArray.Array.data[0]
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

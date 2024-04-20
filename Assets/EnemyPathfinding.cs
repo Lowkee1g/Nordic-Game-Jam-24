@@ -10,8 +10,11 @@ public class EnemyPathfinding : MonoBehaviour
 
     private List<Transform> path;
 
+
     private void Start()
     {
+
+
         // Find the path from start to finish
         path = FindPath();
         foreach (Transform waypoint in path)
@@ -44,6 +47,10 @@ public class EnemyPathfinding : MonoBehaviour
                     yield return null;
 
                 }
+
+                yield return new WaitForSeconds(waypoint.localEulerAngles.x);
+
+                
             }
 
             path.Reverse();
@@ -57,6 +64,12 @@ public class EnemyPathfinding : MonoBehaviour
                     transform.position = Vector3.MoveTowards(transform.position, waypoint.transform.position, Time.deltaTime * speed);
                     yield return null;
                 }
+
+                if(path.IndexOf(waypoint) != path.Count - 1 && path.IndexOf(waypoint) != 0)
+                {
+                    yield return new WaitForSeconds(waypoint.localEulerAngles.x);
+                }
+                
             }
             path.Reverse();
         }
