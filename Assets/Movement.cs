@@ -33,14 +33,14 @@ public class Movement : MonoBehaviour
         //if the sound is playing dont play again, if the sound is not playing play it
         if (sound.isPlaying == false && movement.magnitude != 0){
             sound.Play();
+            float angle = Mathf.Atan2(movement.y, movement.x) * Mathf.Rad2Deg; 
+            rb.rotation = angle;       
         } else if (movement.magnitude == 0){
             sound.Stop();
         }
-
         rb.velocity =  movement * speed * Time.fixedDeltaTime;
+
         //rotation
-        float angle = Mathf.Atan2(movement.y, movement.x) * Mathf.Rad2Deg;
-        rb.rotation = angle;       
 
     }
 }
