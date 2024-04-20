@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: 2987241916855724169}
   - component: {fileID: 4819547238102559567}
   - component: {fileID: 3249809508338370004}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: PlayerV2
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -232,7 +232,7 @@ GameObject:
   - component: {fileID: 3905633631118314038}
   - component: {fileID: 3968047820188283280}
   - component: {fileID: 5669631824162425700}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
