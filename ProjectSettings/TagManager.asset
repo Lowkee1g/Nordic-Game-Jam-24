@@ -7,6 +7,8 @@ TagManager:
   - Spejl
   - Glass
   - Wall
+  - Point
+  - Enemy
   layers:
   - Default
   - TransparentFX

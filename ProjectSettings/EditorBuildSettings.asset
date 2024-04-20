@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/test/test level.unity
     guid: d3851bb1dcd3be0479f068adf0e7e016
+  - enabled: 1
+    path: Assets/Scenes/TitleScreen.unity
+    guid: b622da4c0ab43fe40b83f7f824f58b7a
   m_configObjects: {}

@@ -11,10 +11,20 @@ public class bulletScript : MonoBehaviour
         {
             Destroy(collision.gameObject);
         }
-        else if (collision.gameObject.tag != "Spejl")
+        else if (collision.gameObject.tag == "Wall")
         {
             Destroy(gameObject);
         }
+        else if (collision.gameObject.tag == "Enemy") {
+            Destroy(collision.gameObject);
+            Destroy(gameObject);
+        }
+        else if (collision.gameObject.tag == "Player")
+        {
+            Destroy(collision.gameObject);
+            Destroy(gameObject);
+        }
+
     }
 
 }
