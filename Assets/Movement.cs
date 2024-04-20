@@ -5,28 +5,38 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
     [SerializeField] float speed = 5f;
-    Rigidbody _rb;
-    Vector2 _movement;  
-
+    Rigidbody2D rb;
+    Vector2 movement;
      // Start is called before the first frame update
     void Start()
     {
-        _rb = GetComponent<Rigidbody>();
-    }
 
-    // Update is called once per frame
+        rb = GetComponent<Rigidbody2D>();
+    }    // Update is called once per frame
+
     void Update()
     {
-     _movement = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));   
+        // Input
+        movement = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
     }
-
-
     private void FixedUpdate()
-    {
-        moveCharacter(_movement);
+
+        // Phyisics
+    {   
+        moveCharacter();
     }
-    void moveCharacter(Vector2 direction)
-    {
-        _rb.AddForce(direction * speed);
+
+    
+    void moveCharacter(){
+        if (movement.magnitude != 0){
+        rb.velocity =  movement * speed * Time.fixedDeltaTime;
+        // float angle = Mathf.Atan2(movement.y, movement.x) * Mathf.Rad2Deg;
+        // transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
+        }
+        else{
+            rb.velocity = Vector2.zero;
+        }
+        
     }
+
 }
