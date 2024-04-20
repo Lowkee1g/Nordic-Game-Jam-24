@@ -4,6 +4,16 @@ using UnityEngine;
 
 public class bulletScript : MonoBehaviour
 {
+    // get the GameManagers script
+    public gamemanager gm;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        // get the GameManagers script
+        gm = GameObject.Find("GameManager").GetComponent<gamemanager>();
+    }
+
      // destroy the bullet clone when it collides with objects with out the tag "Spejl"
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -23,6 +33,12 @@ public class bulletScript : MonoBehaviour
         {
             Destroy(collision.gameObject);
             Destroy(gameObject);
+        }
+        else if (collision.gameObject.tag == "Goon")
+        {
+            Destroy(collision.gameObject);
+            Destroy(gameObject);
+            gm.KillPlayer("You shot an innocent person!");
         }
 
     }

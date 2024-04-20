@@ -66,7 +66,18 @@ public class EnemyPathfinding : MonoBehaviour
                 // Move towards the next waypoint
                 while (transform.position != waypoint.transform.position)
                 {
-                    transform.position = Vector3.MoveTowards(transform.position, waypoint.transform.position, Time.deltaTime * speed);
+                    // Determine the direction to the next waypoint
+                    Vector3 direction = (waypoint.position - transform.position).normalized;
+
+                    // Rotate only the Circle child object
+                    if (direction != Vector3.zero)
+                    {
+                        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+                        Quaternion targetRotation = Quaternion.AngleAxis(angle, Vector3.forward); // Adjusted for sprite forward
+                        circleTransform.rotation = Quaternion.RotateTowards(circleTransform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+                    }
+
+                    transform.position = Vector3.MoveTowards(transform.position, waypoint.position, Time.deltaTime * speed);
                     yield return null;
                 }
 

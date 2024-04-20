@@ -32,6 +32,10 @@ public class SpritePlacer : MonoBehaviour
             currentSpriteInstance.GetComponent<Collider2D>().isTrigger = true;
             //currentSpriteInstance.transform.localScale = Vector3.one; // Adjust if your prefab is not 1:1 scale
             currentRotation = 0f;
+        } else if (Input.GetKeyDown(KeyCode.M) && currentSpriteInstance != null)
+        {
+            Destroy(currentSpriteInstance);
+            currentSpriteInstance = null;
         }
 
         // If there's a sprite, follow the mouse position, rotate, and check for placement
@@ -68,6 +72,7 @@ public class SpritePlacer : MonoBehaviour
                 // If any of the colliders we overlapped has the tag "Wall", return true
                 if (hit.gameObject.CompareTag("Wall"))
                 {
+                    Debug.Log("Colliding with wall!");
                     return true;
                 }
             }
@@ -77,7 +82,7 @@ public class SpritePlacer : MonoBehaviour
 
     private bool IsInRange(float dis)
     {
-        Debug.Log(dis);
+        //Debug.Log(dis);
         return dis < maxDis;
     }
 

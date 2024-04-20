@@ -482,7 +482,7 @@ GameObject:
   - component: {fileID: 5306391899470920656}
   m_Layer: 0
   m_Name: goon
-  m_TagString: Enemy
+  m_TagString: Goon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
