@@ -12,6 +12,7 @@ public class EnemyPathfinding : MonoBehaviour
     private Transform circleTransform; // Transform of the circle object
     private List<Transform> path;
 
+
     private void Start()
     {
         // Find the Circle child object
@@ -24,10 +25,10 @@ public class EnemyPathfinding : MonoBehaviour
 
         // Find the path from start to finish
         path = FindPath();
-        foreach (Transform waypoint in path)
-        {
-            Debug.Log(waypoint.name);
-        }
+    
+        // Move along the path
+
+       
         StartCoroutine(FollowPath());
     }
 
@@ -53,12 +54,35 @@ public class EnemyPathfinding : MonoBehaviour
 
                     transform.position = Vector3.MoveTowards(transform.position, waypoint.position, Time.deltaTime * speed);
                     yield return null;
+
                 }
+            }
+
+            path.Reverse();
+
+            foreach (Transform waypoint in path)
+            {
+                currentWaypoint = waypoint;
+                // Move towards the next waypoint
+                while (transform.position != waypoint.transform.position)
+                {
+                    transform.position = Vector3.MoveTowards(transform.position, waypoint.transform.position, Time.deltaTime * speed);
+                    yield return null;
+                }
+
+                if(path.IndexOf(waypoint) != path.Count - 1 && path.IndexOf(waypoint) != 0)
+                {
+                    yield return new WaitForSeconds(waypoint.localEulerAngles.x);
+                }
+                
             }
 
             // Reverse the path
             path.Reverse();
         }
+
+      
+        // Path completed
     }
 
     private List<Transform> FindPath()
