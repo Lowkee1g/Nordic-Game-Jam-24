@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Spejl
   - Glass
+  - Wall
   layers:
   - Default
   - TransparentFX
