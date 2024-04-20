@@ -17,13 +17,7 @@ public class EnemyPathfinding : MonoBehaviour
 
         // Find the path from start to finish
         path = FindPath();
-        foreach (Transform waypoint in path)
-        {
-            Debug.Log(waypoint.name);
-        }
-        // Reverse the path for the children objects of rute
-        //path.Reverse();
-
+    
         // Move along the path
 
        
@@ -76,7 +70,6 @@ public class EnemyPathfinding : MonoBehaviour
 
       
         // Path completed
-        Debug.Log("Path completed!");
     }
     
 
