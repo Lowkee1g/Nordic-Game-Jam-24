@@ -22,32 +22,60 @@ public class EnemyPathfinding : MonoBehaviour
         //path.Reverse();
 
         // Move along the path
+
+       
         StartCoroutine(FollowPath());
+            
+        
     }
 
     private IEnumerator FollowPath()
     {
-        foreach (Transform waypoint in path)
+        while (true)
         {
-            currentWaypoint = waypoint;
-            // Move towards the next waypoint
-            while (transform.position != waypoint.transform.position)
+         
+            foreach (Transform waypoint in path)
             {
-                transform.position = Vector3.MoveTowards(transform.position, waypoint.transform.position, Time.deltaTime * speed);
-                yield return null;
+                currentWaypoint = waypoint;
+                // Move towards the next waypoint
+                while (transform.position != waypoint.transform.position)
+                {
+                    transform.position = Vector3.MoveTowards(transform.position, waypoint.transform.position, Time.deltaTime * speed);
+                    yield return null;
+
+                }
             }
+
+            path.Reverse();
+
+            foreach (Transform waypoint in path)
+            {
+                currentWaypoint = waypoint;
+                // Move towards the next waypoint
+                while (transform.position != waypoint.transform.position)
+                {
+                    transform.position = Vector3.MoveTowards(transform.position, waypoint.transform.position, Time.deltaTime * speed);
+                    yield return null;
+                }
+            }
+            path.Reverse();
         }
 
+      
         // Path completed
         Debug.Log("Path completed!");
     }
+    
 
     private List<Transform> FindPath()
     {
         // Find the path from start to finish
         //List<GameObject> path = new List<GameObject>();
 
-        return new List<Transform>(rute.transform.GetComponentsInChildren<Transform>());
+        List<Transform> path = new List<Transform>(rute.transform.GetComponentsInChildren<Transform>());
+        path.RemoveAt(0);
+
+        return path;
     }
 
 
