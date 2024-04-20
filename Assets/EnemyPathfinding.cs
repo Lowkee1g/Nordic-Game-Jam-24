@@ -101,4 +101,12 @@ public class EnemyPathfinding : MonoBehaviour
         }
         transform.position = other.transform.position;
     }
+
+    void OnCollisionEnter2D(Collision2D other) {
+        if (other.gameObject.tag == "Spejl")
+        {
+            Destroy(other.gameObject);
+        }
+    }
+
 }

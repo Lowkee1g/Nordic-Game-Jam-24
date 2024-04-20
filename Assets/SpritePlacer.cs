@@ -11,6 +11,8 @@ public class SpritePlacer : MonoBehaviour
     private Color placeableColor = Color.cyan; // Color when placement is allowed
     private Color nonPlaceableColor = Color.red; // Color when placement is not allowed
 
+    public float maxDis = 10;
+
     // Safe the original color of the sprite
     private Color originalColor;
 
@@ -27,6 +29,7 @@ public class SpritePlacer : MonoBehaviour
         {
             Vector3 spawnPosition = GetWorldPositionAtDepth(Input.mousePosition, placementDepth);
             currentSpriteInstance = Instantiate(spritePrefab, spawnPosition, Quaternion.identity);
+            currentSpriteInstance.GetComponent<Collider2D>().isTrigger = true;
             //currentSpriteInstance.transform.localScale = Vector3.one; // Adjust if your prefab is not 1:1 scale
             currentRotation = 0f;
         }
@@ -35,11 +38,12 @@ public class SpritePlacer : MonoBehaviour
         if (currentSpriteInstance != null)
         {
             currentSpriteInstance.transform.position = GetWorldPositionAtDepth(Input.mousePosition, placementDepth);
+
             currentRotation += Input.mouseScrollDelta.y;
             currentSpriteInstance.transform.rotation = Quaternion.Euler(0f, 0f, currentRotation);
 
             // Check if the mirror's placement is valid
-            bool canPlace = !IsCollidingWithWall(currentSpriteInstance);
+            bool canPlace = !IsCollidingWithWall(currentSpriteInstance) && IsInRange((currentSpriteInstance.transform.position - this.transform.position).magnitude);
             SpriteRenderer spriteRenderer = currentSpriteInstance.GetComponent<SpriteRenderer>();
             spriteRenderer.color = canPlace ? placeableColor : nonPlaceableColor;
 
@@ -47,6 +51,7 @@ public class SpritePlacer : MonoBehaviour
             if (canPlace && Input.GetMouseButtonDown(0))
             {
                 currentSpriteInstance.GetComponent<SpriteRenderer>().color = originalColor; // Reset color or set to a default color
+                currentSpriteInstance.GetComponent<Collider2D>().isTrigger = false;
                 currentSpriteInstance = null; // Deselect sprite, allowing for a new one to be created
             }
         }
@@ -70,6 +75,13 @@ public class SpritePlacer : MonoBehaviour
         return false;
     }
 
+    private bool IsInRange(float dis)
+    {
+        Debug.Log(dis);
+        return dis < maxDis;
+    }
+
+ 
     private Vector3 GetWorldPositionAtDepth(Vector3 screenPosition, float depth)
     {
         Ray ray = mainCamera.ScreenPointToRay(screenPosition);
