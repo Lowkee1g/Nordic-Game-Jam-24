@@ -1953,6 +1953,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8051787229042144270, guid: 2cf0a01c410a1c141b75074677666fc8, type: 3}
+      propertyPath: m_TagString
+      value: PlayerSprite
+      objectReference: {fileID: 0}
     - target: {fileID: 8335006431446646077, guid: 2cf0a01c410a1c141b75074677666fc8, type: 3}
       propertyPath: m_LocalPosition.x
       value: -15.29
@@ -3958,6 +3962,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1848946221385341345, guid: 0662c065b822e844c8061f7445328c62, type: 3}
+      propertyPath: canShootSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: b329813534127c043a1018e90f1ebec6, type: 3}
+    - target: {fileID: 1848946221385341345, guid: 0662c065b822e844c8061f7445328c62, type: 3}
+      propertyPath: cannotShootSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9c9c84cc577c5a749adc5b1bba89ac53, type: 3}
     - target: {fileID: 3940896266684407440, guid: 0662c065b822e844c8061f7445328c62, type: 3}
       propertyPath: m_Name
       value: FiringZone

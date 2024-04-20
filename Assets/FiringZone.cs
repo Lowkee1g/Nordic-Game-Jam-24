@@ -6,18 +6,26 @@ public class FiringZone : MonoBehaviour
 {
     private GameObject playerObject;
     private laser laserScript;
+    private GameObject playerSpriteObject;
+    private SpriteRenderer playerSpriteRenderer;
+
+    public Sprite canShootSprite; // Assign the can shoot sprite in the Unity Editor
+    public Sprite cannotShootSprite; // Assign the cannot shoot sprite in the Unity Editor
 
 
     void Start()
     {
         playerObject = GameObject.FindGameObjectWithTag("Player");
         laserScript = playerObject.GetComponent<laser>();
+        playerSpriteObject = GameObject.FindGameObjectWithTag("PlayerSprite");
+        playerSpriteRenderer = playerSpriteObject.GetComponent<SpriteRenderer>();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
+            SetPlayerSprite(canShootSprite);
             EnableLaserScript();
         }
     }
@@ -26,7 +34,8 @@ public class FiringZone : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-             DisableLaserScript();
+            SetPlayerSprite(cannotShootSprite);
+            DisableLaserScript();
         }
     }
 
@@ -39,6 +48,7 @@ public class FiringZone : MonoBehaviour
             if (laserScript != null)
             {
                 laserScript.enabled = false;
+                
             }
         }
     }
@@ -53,6 +63,14 @@ public class FiringZone : MonoBehaviour
             {
                 laserScript.enabled = true;
             }
+        }
+    }
+
+        private void SetPlayerSprite(Sprite newSprite)
+    {
+        if (playerSpriteRenderer != null)
+        {
+            playerSpriteRenderer.sprite = newSprite;
         }
     }
 }
