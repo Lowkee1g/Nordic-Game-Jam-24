@@ -36,11 +36,6 @@ public class Movement : MonoBehaviour
         } else if (movement.magnitude == 0){
             sound.Stop();
         }
-
         rb.velocity =  movement * speed * Time.fixedDeltaTime;
-        //rotation
-        float angle = Mathf.Atan2(movement.y, movement.x) * Mathf.Rad2Deg;
-        rb.rotation = angle;       
-
     }
 }
