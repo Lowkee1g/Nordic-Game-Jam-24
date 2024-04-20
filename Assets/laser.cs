@@ -14,12 +14,30 @@ public class laser : MonoBehaviour
         // throw the bullet in the direction of the laser using the bullet's rigidbody 2d   
         if (Input.GetMouseButtonDown(0) )
         {
-            bulletClone = Instantiate(bullet, transform.position + transform.right, transform.rotation);
-            bulletClone.GetComponent<Rigidbody2D>().velocity = transform.right * 5;
+            bulletClone = Instantiate(bullet, transform.position + GetDirection(), transform.rotation);
+            bulletClone.GetComponent<Rigidbody2D>().velocity = GetDirection() * 5;
         }
 
 
         
     }
 
+    // get a normalized vector from the laser to the mouse position using getWorldPositionAtDepth vector3
+    private Vector3 GetDirection()
+    {
+        Vector3 mousePosition = GetWorldPositionAtDepth(Input.mousePosition, 0f);
+        return (mousePosition - transform.position).normalized;
+    }
+
+    
+
+    private Vector3 GetWorldPositionAtDepth(Vector3 screenPosition, float depth)
+    {
+        Camera mainCamera = Camera.main;
+        Ray ray = mainCamera.ScreenPointToRay(screenPosition);
+        Plane xy = new Plane(Vector3.forward, new Vector3(0, 0, depth));
+        float distance;
+        xy.Raycast(ray, out distance);
+        return ray.GetPoint(distance);
+    }
 }
