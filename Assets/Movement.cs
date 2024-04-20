@@ -8,11 +8,16 @@ public class Movement : MonoBehaviour
     private Vector2 movement;
     private AudioSource sound;
 
+    private SpritePlacer spritePlacer;
+
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         sound = GetComponent<AudioSource>();
+        spritePlacer = GameObject.Find("Camera").GetComponent<SpritePlacer>();
+        
+
     }
 
     // Update is called once per frame
@@ -68,6 +73,7 @@ public class Movement : MonoBehaviour
         {
             Debug.Log("Spejl hit: " + hit.collider.gameObject.name);
             Destroy(hit.collider.gameObject);
+            spritePlacer.currentSpejles--;
         }
     }
 }

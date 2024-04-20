@@ -1262,12 +1262,20 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 8567209742816847184, guid: 0124dcfe79963f549b4a0ba2201c6418, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8602039169940546734, guid: 0124dcfe79963f549b4a0ba2201c6418, type: 3}
       propertyPath: m_Name
       value: Triangle
       objectReference: {fileID: 0}
     - target: {fileID: 8982274847082254989, guid: 0124dcfe79963f549b4a0ba2201c6418, type: 3}
       propertyPath: rute
+      value: 
+      objectReference: {fileID: 1795063670}
+    - target: {fileID: 8982274847082254989, guid: 0124dcfe79963f549b4a0ba2201c6418, type: 3}
+      propertyPath: route
       value: 
       objectReference: {fileID: 1795063670}
     - target: {fileID: 8982274847082254989, guid: 0124dcfe79963f549b4a0ba2201c6418, type: 3}
@@ -2682,6 +2690,9 @@ MonoBehaviour:
     m_Bits: 1
   mainCamera: {fileID: 1236146904}
   placementDepth: 0
+  maxDis: 11
+  maxSpejles: 2
+  currentSpejles: 0
 --- !u!1 &1398639534
 GameObject:
   m_ObjectHideFlags: 0
