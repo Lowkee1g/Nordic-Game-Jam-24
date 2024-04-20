@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class EnemySight : MonoBehaviour
 {
@@ -10,12 +11,21 @@ public class EnemySight : MonoBehaviour
     public LayerMask obstructionMask;
     public Transform viewPoint;
 
+    public gamemanager gameManager;
+
+    // reference to the slider that will represent the suspicion meter
+    public Slider susMeterSlider;
+
     private bool playerSpotted = false;
-    private float susMeter = 0f;
+    public float susMeter = 0f;
     public float suspicionIncreaseRate = 1f; // Rate at which suspicion meter increases per second
 
     // Optional: Reference to the enemy's movement script
     public MonoBehaviour enemyMovementScript;
+    private void Awake() {
+        susMeterSlider.gameObject.SetActive(false);
+        gameManager = GameObject.Find("GameManager").GetComponent<gamemanager>();
+    }
 
     private void Update()
     {
@@ -42,7 +52,6 @@ public class EnemySight : MonoBehaviour
             }
             else
             {
-                Debug.Log("Hit: " + hit.collider.gameObject.name);
                 if (hit.collider.gameObject.CompareTag("Player"))
                 {
                     Debug.DrawRay(viewPoint.position, direction * hit.distance, Color.yellow);
@@ -79,12 +88,22 @@ public class EnemySight : MonoBehaviour
     {
         susMeter += suspicionIncreaseRate * Time.deltaTime;
         susMeter = Mathf.Clamp(susMeter, 0, 1000);
-        Debug.Log("Suspicion Meter: " + susMeter);
-        // Here you can implement what happens when the susMeter reaches 1000
-        if (susMeter >= 1000)
+        susMeterSlider.value = susMeter;
+        // if the susMeter is higher than 1
+        if (susMeter > 1)
         {
-            Debug.Log("Suspicion Meter maxed! Player caught.");
-            // Add your logic here for when the player is caught
+            susMeterSlider.gameObject.SetActive(true);
+            // decrease the susMeter by 1 every second
+            susMeter -= 50 * Time.deltaTime;
+        }
+
+        // Here you can implement what happens when the susMeter reaches 1000
+        if (susMeter >= 999)
+        {
+            Debug.Log("Player was spotted by the enemy!");
+            gameManager.KillPlayer("You were spotted by the enemy!");
+            // find the GameManager object and call the killplayer method
+
         }
     }
 

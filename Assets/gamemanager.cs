@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class gamemanager : MonoBehaviour
 {
@@ -9,6 +11,7 @@ public class gamemanager : MonoBehaviour
 
     public GameObject[] Enemies;
     public GameObject GameOverScreen;
+    public TextMeshProUGUI endgame_msg;
 
     // Start is called before the first frame update
     void Awake()
@@ -30,7 +33,16 @@ public class gamemanager : MonoBehaviour
         }
         PlayerDeath();
     }
-    
+    public void KillPlayer()
+    {
+        Destroy(Player);
+    }
+    public void KillPlayer(string msg) {
+        Debug.Log(msg);
+        endgame_msg.text = msg;
+        Destroy(Player);
+    }
+
     // check if the player is dead
     public void PlayerDeath()
     {
