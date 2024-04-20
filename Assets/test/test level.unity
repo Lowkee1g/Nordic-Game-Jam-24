@@ -2368,7 +2368,7 @@ Transform:
   m_GameObject: {fileID: 1236146901}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.313, y: -1.874, z: -10}
+  m_LocalPosition: {x: -4, y: 0, z: -20}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2445,9 +2445,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9066c1b36e0ba0b4b9dbc57c1dea216d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 87726351}
+  camTarget: {fileID: 87726351}
   smoothSpeed: 2
   offset: {x: 0, y: 0, z: -10}
+  BulletOffset: {x: 0, y: 0, z: -4}
 --- !u!114 &1236146906
 MonoBehaviour:
   m_ObjectHideFlags: 0
