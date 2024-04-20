@@ -18,7 +18,8 @@ public class laser : MonoBehaviour
             bulletClone.GetComponent<Rigidbody2D>().velocity = transform.up * 5;
         }
 
-        
+
         
     }
+
 }
