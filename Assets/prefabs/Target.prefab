@@ -456,7 +456,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: 21300000, guid: a3c870b6a66f7be42bbfe70381d45cc0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d7e3a9cea816a9e438ece38ce817f955, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -481,7 +481,7 @@ GameObject:
   - component: {fileID: 6216526389850079160}
   - component: {fileID: 5306391899470920656}
   m_Layer: 0
-  m_Name: Triangle
+  m_Name: Target
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

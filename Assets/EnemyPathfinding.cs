@@ -54,8 +54,8 @@ public class EnemyPathfinding : MonoBehaviour
 
                     transform.position = Vector3.MoveTowards(transform.position, waypoint.position, Time.deltaTime * speed);
                     yield return null;
-
                 }
+                yield return new WaitForSeconds(waypoint.localEulerAngles.x);
             }
 
             path.Reverse();
