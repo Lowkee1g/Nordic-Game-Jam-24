@@ -16,9 +16,17 @@ public class SpritePlacer : MonoBehaviour
     // Safe the original color of the sprite
     private Color originalColor;
 
+    public int maxSpejles;
+
+    public int currentSpejles;
+
+    private GameObject playerObject;
+
     void Start()
     {
         originalColor = spritePrefab.GetComponent<SpriteRenderer>().color;
+
+        playerObject = GameObject.FindGameObjectWithTag("Player");
     }
 
 
@@ -43,7 +51,7 @@ public class SpritePlacer : MonoBehaviour
             currentSpriteInstance.transform.rotation = Quaternion.Euler(0f, 0f, currentRotation);
 
             // Check if the mirror's placement is valid
-            bool canPlace = !IsCollidingWithWall(currentSpriteInstance) && IsInRange((currentSpriteInstance.transform.position - this.transform.position).magnitude);
+            bool canPlace = !IsCollidingWithWall(currentSpriteInstance) && IsInRange((currentSpriteInstance.transform.position - playerObject.transform.position).magnitude) && hasMoreSpejles();
             SpriteRenderer spriteRenderer = currentSpriteInstance.GetComponent<SpriteRenderer>();
             spriteRenderer.color = canPlace ? placeableColor : nonPlaceableColor;
 
@@ -53,6 +61,7 @@ public class SpritePlacer : MonoBehaviour
                 currentSpriteInstance.GetComponent<SpriteRenderer>().color = originalColor; // Reset color or set to a default color
                 currentSpriteInstance.GetComponent<Collider2D>().isTrigger = false;
                 currentSpriteInstance = null; // Deselect sprite, allowing for a new one to be created
+                currentSpejles++;
             }
         }
     }
@@ -73,6 +82,11 @@ public class SpritePlacer : MonoBehaviour
             }
         }
         return false;
+    }
+
+    private bool hasMoreSpejles()
+    {
+        return currentSpejles < maxSpejles;
     }
 
     private bool IsInRange(float dis)
