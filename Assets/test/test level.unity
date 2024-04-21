@@ -2109,6 +2109,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 4819547238102559567, guid: 2cf0a01c410a1c141b75074677666fc8, type: 3}
+      propertyPath: canShoot
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8051787229042144270, guid: 2cf0a01c410a1c141b75074677666fc8, type: 3}
       propertyPath: m_Layer
       value: 3
@@ -3204,7 +3208,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
