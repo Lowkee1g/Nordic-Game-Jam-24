@@ -24,6 +24,7 @@ public class bulletScript : MonoBehaviour
         else if (collision.gameObject.tag == "Wall")
         {
             Destroy(gameObject);
+            gm.KillPlayer("You shot missed the shot!");
         }
         else if (collision.gameObject.tag == "Enemy") {
             Destroy(collision.gameObject);
@@ -33,6 +34,7 @@ public class bulletScript : MonoBehaviour
         {
             Destroy(collision.gameObject);
             Destroy(gameObject);
+            gm.KillPlayer("You shot yourself!");
         }
         else if (collision.gameObject.tag == "Goon")
         {
