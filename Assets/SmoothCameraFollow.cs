@@ -32,13 +32,11 @@ public class SmoothCameraFollow : MonoBehaviour
             Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed * 4 * Time.deltaTime);
             transform.position = smoothedPosition;
         }else {
-            if(target != null){
-                // if there is no bullet in the scene, set the target to the player
-                target = camTarget;
-                Vector3 desiredPosition = target.position + offset;
-                Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed * Time.deltaTime);
-                transform.position = smoothedPosition;
-            }
+            // if there is no bullet in the scene, set the target to the player
+            target = camTarget;
+            Vector3 desiredPosition = target.position + offset;
+            Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed * Time.deltaTime);
+            transform.position = smoothedPosition;
         }
 
         // Optionally, you can make the camera always look at the target:
