@@ -47,7 +47,7 @@ public class FiringZone : MonoBehaviour
             // Get the "laser" script attached to the player object and disable it
             if (laserScript != null)
             {
-                laserScript.enabled = false;
+                laserScript.canShoot = false;
                 
             }
         }
@@ -61,7 +61,7 @@ public class FiringZone : MonoBehaviour
             // Get the "laser" script attached to the player object and enable it
             if (laserScript != null)
             {
-                laserScript.enabled = true;
+                laserScript.canShoot = true;
             }
         }
     }
