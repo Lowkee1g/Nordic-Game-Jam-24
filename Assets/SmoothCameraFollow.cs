@@ -25,7 +25,13 @@ public class SmoothCameraFollow : MonoBehaviour
 
             Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed * 4 * Time.deltaTime);
             transform.position = smoothedPosition;
-        } else {
+        } else if(GameObject.Find("Tracer Bullet(Clone)") != null){
+            target = GameObject.Find("Tracer Bullet(Clone)").transform;
+            Vector3 desiredPosition = target.position + BulletOffset;
+
+            Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed * 4 * Time.deltaTime);
+            transform.position = smoothedPosition;
+        }else {
             // if there is no bullet in the scene, set the target to the player
             target = camTarget;
             Vector3 desiredPosition = target.position + offset;
