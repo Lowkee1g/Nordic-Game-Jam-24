@@ -60,6 +60,13 @@ public class SpritePlacer : MonoBehaviour
         // If there's a sprite, follow the mouse position, rotate, and check for placement
         if (currentSpriteInstance != null)
         {
+
+            if (!NearPlayer(this.transform.position))
+            {
+                Destroy(currentSpriteInstance);
+                currentSpriteInstance = null;
+                return;
+            }
             currentSpriteInstance.transform.position = GetWorldPositionAtDepth(Input.mousePosition, placementDepth);
 
             // Rotate the sprite by pressing r
@@ -113,6 +120,11 @@ public class SpritePlacer : MonoBehaviour
             }
         }
         return false;
+    }
+
+    private bool NearPlayer(Vector3 pos)
+    {
+        return (pos - playerObject.transform.position).magnitude < maxDis;
     }
 
     private bool hasMoreSpejles()

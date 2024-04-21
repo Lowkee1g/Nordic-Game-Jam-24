@@ -7,15 +7,30 @@ public class laser : MonoBehaviour
 
     private GameObject bulletClone = null;
 
+    public GameObject tracerBullet;
+
+    private GameObject tracerBulletClone = null;
+
+    public bool canShoot = false;
+
 
     // Update is called once per frame
     void Update()
     {
         // throw the bullet in the direction of the laser using the bullet's rigidbody 2d   
-        if (Input.GetKeyUp(KeyCode.Space)){
+        if (Input.GetKeyUp(KeyCode.Space) && canShoot == true && bulletClone == null && tracerBulletClone == null){
             bulletClone = Instantiate(bullet, transform.position + GetDirection(), transform.rotation);
             bulletClone.GetComponent<Rigidbody2D>().velocity = GetDirection() * 8;
         }
+
+        //shoots tracer bullet when t is pressed
+        if (Input.GetKeyUp(KeyCode.T) && tracerBulletClone == null)
+        {
+            tracerBulletClone = Instantiate(tracerBullet, transform.position + GetDirection(), transform.rotation);
+            tracerBulletClone.GetComponent<Rigidbody2D>().velocity = GetDirection() * 5;
+        }   
+
+
   
     }
 

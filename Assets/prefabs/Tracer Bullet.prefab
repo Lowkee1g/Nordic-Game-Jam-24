@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 3949311154284821604}
   - component: {fileID: 602966894592985030}
   - component: {fileID: 8254872296563667551}
-  - component: {fileID: 5658815758572149036}
   - component: {fileID: 3273315222971786083}
+  - component: {fileID: 7583468307134353182}
   m_Layer: 0
   m_Name: Tracer Bullet
   m_TagString: Untagged
@@ -151,7 +151,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 1
+  m_Radius: 5
 --- !u!58 &602966894592985030
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -184,9 +184,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.00000059604645, y: 0.0000019073486}
+  m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.49999994
+  m_Radius: 0.1
 --- !u!96 &8254872296563667551
 TrailRenderer:
   serializedVersion: 3
@@ -229,7 +229,7 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Time: 0.25
+  m_Time: 1
   m_PreviewTimeScale: 1
   m_Parameters:
     serializedVersion: 3
@@ -238,8 +238,8 @@ TrailRenderer:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 0
-        value: 1
+        time: 0.019355774
+        value: 0.36546135
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -247,8 +247,8 @@ TrailRenderer:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 0.72110975
-        value: 0.6923445
+        time: 0.7049812
+        value: 0.13009626
         inSlope: -1.437746
         outSlope: -1.437746
         tangentMode: 0
@@ -269,8 +269,8 @@ TrailRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0.57078713, g: 0.20392159, b: 0.8627451, a: 1}
-      key1: {r: 0.57078713, g: 0.20392159, b: 0.8627451, a: 0.7220863}
+      key0: {r: 0.86261535, g: 0.8627451, b: 0.20392159, a: 1}
+      key1: {r: 0.87259185, g: 0.9308176, b: 0.026343735, a: 0.7220863}
       key2: {r: 0.9766933, g: 1, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -285,7 +285,7 @@ TrailRenderer:
       ctime5: 0
       ctime6: 0
       ctime7: 0
-      atime0: 154
+      atime0: 0
       atime1: 40478
       atime2: 65072
       atime3: 0
@@ -309,18 +309,6 @@ TrailRenderer:
   m_Autodestruct: 0
   m_Emitting: 1
   m_ApplyActiveColorSpace: 1
---- !u!114 &5658815758572149036
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3032442462976004003}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a62e0aef5d1f6774eb7979b33e1e93aa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!82 &3273315222971786083
 AudioSource:
   m_ObjectHideFlags: 0
@@ -417,3 +405,16 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &7583468307134353182
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3032442462976004003}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3811d5fd5f0c99d409fce59ef8f248ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  circleCollider: {fileID: 0}
