@@ -14,6 +14,7 @@ public class laser : MonoBehaviour
     public bool canShoot = false;
 
 
+
     // Update is called once per frame
     void Update()
     {
