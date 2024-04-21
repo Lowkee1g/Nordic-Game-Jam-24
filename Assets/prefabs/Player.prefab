@@ -98,3 +98,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 3032442462976004003, guid: 235172cd61db0fb40b9bd8c9f37239d2, type: 3}
+  tracerBullet: {fileID: 3032442462976004003, guid: 45747b8463dbc2a4095282e9e05df5b1, type: 3}
+  canShoot: 0
