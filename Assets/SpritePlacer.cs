@@ -29,6 +29,17 @@ public class SpritePlacer : MonoBehaviour
         playerObject = GameObject.FindGameObjectWithTag("Player");
     }
 
+    private float NormalizeAngle(float angle)
+{
+    // Normalize the angle to be within 0 and 360 degrees
+    angle = angle % 360f;
+    if (angle < 0)
+    {
+        angle += 360f;
+    }
+    return angle;
+}
+
 
     void Update()
     {
@@ -51,8 +62,15 @@ public class SpritePlacer : MonoBehaviour
         {
             currentSpriteInstance.transform.position = GetWorldPositionAtDepth(Input.mousePosition, placementDepth);
 
-            currentRotation += Input.mouseScrollDelta.y;
-            currentSpriteInstance.transform.rotation = Quaternion.Euler(0f, 0f, currentRotation);
+            // Check mouse scroll wheel and update rotation in increments of 22.5 degrees
+            float scroll = Input.mouseScrollDelta.y;
+            if (scroll != 0)
+            {
+                currentRotation += scroll > 0 ? 22.5f : -22.5f; // Rotate in increments of 22.5 degrees
+                currentRotation = NormalizeAngle(currentRotation); // Keep the angle between 0-360 degrees
+                currentSpriteInstance.transform.rotation = Quaternion.Euler(0f, 0f, currentRotation);
+            }
+
 
             // Check if the mirror's placement is valid
             bool canPlace = !IsCollidingWithWall(currentSpriteInstance) && IsInRange((currentSpriteInstance.transform.position - playerObject.transform.position).magnitude) && hasMoreSpejles();

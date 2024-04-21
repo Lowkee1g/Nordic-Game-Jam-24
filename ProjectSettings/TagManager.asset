@@ -10,6 +10,7 @@ TagManager:
   - Point
   - Enemy
   - PlayerSprite
+  - Goon
   layers:
   - Default
   - TransparentFX

@@ -38,7 +38,7 @@ public class bulletScript : MonoBehaviour
         {
             Destroy(collision.gameObject);
             Destroy(gameObject);
-            gm.KillPlayer("You shot an innocent person!");
+            gm.KillPlayer("You shot the wrong person!");
         }
 
     }
