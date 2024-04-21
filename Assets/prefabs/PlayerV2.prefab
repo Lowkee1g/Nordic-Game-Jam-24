@@ -125,6 +125,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 3032442462976004003, guid: 235172cd61db0fb40b9bd8c9f37239d2, type: 3}
+  tracerBullet: {fileID: 0}
+  canShoot: 0
 --- !u!82 &3249809508338370004
 AudioSource:
   m_ObjectHideFlags: 0
@@ -274,7 +276,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
