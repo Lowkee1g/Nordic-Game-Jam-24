@@ -11,6 +11,8 @@ TagManager:
   - Enemy
   - PlayerSprite
   - Goon
+  - SlowmoArea
+  - Bullet
   layers:
   - Default
   - TransparentFX
