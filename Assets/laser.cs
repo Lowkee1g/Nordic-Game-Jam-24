@@ -14,7 +14,7 @@ public class laser : MonoBehaviour
         // throw the bullet in the direction of the laser using the bullet's rigidbody 2d   
         if (Input.GetKeyUp(KeyCode.Space)){
             bulletClone = Instantiate(bullet, transform.position + GetDirection(), transform.rotation);
-            bulletClone.GetComponent<Rigidbody2D>().velocity = GetDirection() * 5;
+            bulletClone.GetComponent<Rigidbody2D>().velocity = GetDirection() * 8;
         }
   
     }

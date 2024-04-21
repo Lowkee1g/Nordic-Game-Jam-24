@@ -62,6 +62,14 @@ public class SpritePlacer : MonoBehaviour
         {
             currentSpriteInstance.transform.position = GetWorldPositionAtDepth(Input.mousePosition, placementDepth);
 
+            // Rotate the sprite by pressing r
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                currentRotation += 22.5f; // Rotate in increments of 22.5 degrees
+                currentRotation = NormalizeAngle(currentRotation); // Keep the angle between 0-360 degrees
+                currentSpriteInstance.transform.rotation = Quaternion.Euler(0f, 0f, currentRotation);
+            }
+
             // Check mouse scroll wheel and update rotation in increments of 22.5 degrees
             float scroll = Input.mouseScrollDelta.y;
             if (scroll != 0)
