@@ -57,8 +57,4 @@ public class SmoothCameraFollow : MonoBehaviour
     }
 
 
-    void normalCamMove()
-    {
-        
-    }
 }
