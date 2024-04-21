@@ -10,7 +10,7 @@ public class EnemyPathfinding : MonoBehaviour
 
     private Transform currentWaypoint;
     private Transform circleTransform; // Transform of the circle object
-    private List<Transform> path;
+    private List<Transform> path = null;
 
 
     private void Start()
@@ -98,8 +98,10 @@ public class EnemyPathfinding : MonoBehaviour
 
     private List<Transform> FindPath()
     {
-        List<Transform> path = new List<Transform>(route.GetComponentsInChildren<Transform>());
-        path.RemoveAt(0); // Remove the route itself, leaving only its waypoints
+        if(route.GetComponentsInChildren<Transform>() != null){
+            List<Transform> path = new List<Transform>(route.GetComponentsInChildren<Transform>());
+            path.RemoveAt(0); // Remove the route itself, leaving only its waypoints
+        }
 
         return path;
     }

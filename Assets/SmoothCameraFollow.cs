@@ -1,5 +1,6 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
-
 public class SmoothCameraFollow : MonoBehaviour
 {
     private Transform target; // The target the camera should follow
@@ -11,37 +12,53 @@ public class SmoothCameraFollow : MonoBehaviour
     // lock the camera to the player at the start
     void Start()
     {
-        target = camTarget;
+        StartCoroutine(CamCode());
     }
 
-
-    void LateUpdate()
+    private IEnumerator CamCode()
     {
-        // if there is a bullet in the scene, set the target to the bullet
-        if (GameObject.Find("Bullet(Clone)") != null)
-        {
-            target = GameObject.Find("Bullet(Clone)").transform;
-            Vector3 desiredPosition = target.position + BulletOffset;
+        //findes the obejct with the tag "Enemy" and sets it as the target
+        target = GameObject.FindGameObjectWithTag("Enemy").transform;
 
-            Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed * 4 * Time.deltaTime);
-            transform.position = smoothedPosition;
-        } else if(GameObject.Find("Tracer Bullet(Clone)") != null){
-            target = GameObject.Find("Tracer Bullet(Clone)").transform;
-            Vector3 desiredPosition = target.position + BulletOffset;
+        this.transform.position = new Vector3(target.position.x, target.position.y, -10);
 
-            Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed * 4 * Time.deltaTime);
-            transform.position = smoothedPosition;
-        }else {
-            if(target != null){
+        yield return new WaitForSeconds(2);
+
+        
+        while(true){
+            // if there is a bullet in the scene, set the target to the bullet
+            if (GameObject.Find("Bullet(Clone)") != null)
+            {
+                target = GameObject.Find("Bullet(Clone)").transform;
+                Vector3 desiredPosition = target.position + BulletOffset;
+
+                Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed * 4 * Time.deltaTime);
+                transform.position = smoothedPosition;
+            } else if(GameObject.Find("Tracer Bullet(Clone)") != null){
+                target = GameObject.Find("Tracer Bullet(Clone)").transform;
+                Vector3 desiredPosition = target.position + BulletOffset;
+
+                Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed * 4 * Time.deltaTime);
+                transform.position = smoothedPosition;
+            }else {
+               
                 // if there is no bullet in the scene, set the target to the player
                 target = camTarget;
                 Vector3 desiredPosition = target.position + offset;
                 Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed * Time.deltaTime);
                 transform.position = smoothedPosition;
+            
             }
-        }
 
-        // Optionally, you can make the camera always look at the target:
-        //transform.LookAt(target);
+            yield return null;  
+        }
+        
+
+    }
+
+
+    void normalCamMove()
+    {
+        
     }
 }
